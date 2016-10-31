@@ -1,0 +1,30 @@
+﻿<Window x:Class="Prosty_System_zamówień.Window2"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Prosty_System_zamówień"
+        mc:Ignorable="d"
+        ResizeMode="CanMinimize"
+        Title="Window2" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="86*"/>
+            <RowDefinition Height="183*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="71*"/>
+            <ColumnDefinition Width="75*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="Zapisz" Content="Zapisz zmiany" HorizontalAlignment="Left" Height="22" Margin="56,103,0,0" VerticalAlignment="Top" Width="82" Click="Zapisz_Click" Grid.Row="1"/>
+        <Button x:Name="Anuluj" Content="Anuluj" HorizontalAlignment="Left" Height="22" Margin="50,103,0,0" VerticalAlignment="Top" Width="68" Click="Anuluj_Click" Grid.Column="1" Grid.Row="1"/>
+        <Label x:Name="NazwiskoEdytuj" Content="Nazwisko:" HorizontalAlignment="Left" Height="23" Margin="28,44.761,0,0" VerticalAlignment="Top" Width="64" Grid.Row="1"/>
+        <Label x:Name="ImieEdytuj" Content="Imie:" HorizontalAlignment="Left" Height="23" Margin="56,7.761,0,0" VerticalAlignment="Top" Width="36" Grid.Row="1"/>
+        <TextBox x:Name="NoweImie" HorizontalAlignment="Left" Height="18" Margin="8,12.761,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="102" Grid.Column="1" Grid.Row="1"/>
+        <TextBox x:Name="NoweNazwisko" HorizontalAlignment="Left" Height="18" Margin="8,49.761,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="102" Grid.Column="1" Grid.Row="1"/>
+        <Label x:Name="label" Content="Wprowadź nowe dane klienta, a następnie &#xD;&#xA;zapisz zmiany" HorizontalAlignment="Left" Height="44" Margin="20,10,0,0" VerticalAlignment="Top" Width="252" Grid.ColumnSpan="2"/>
+        <Label x:Name="eId" Content="ID:" HorizontalAlignment="Left" Height="23" Margin="66,59,0,0" VerticalAlignment="Top" Width="26"/>
+        <Label x:Name="_eID" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="8,59,0,0" VerticalAlignment="Top" Width="47"/>
+        <Button x:Name="UsunKlienta" Content="Usuń Klienta" HorizontalAlignment="Left" Height="22" Margin="56,143,0,0" Grid.Row="1" VerticalAlignment="Top" Width="204" Grid.ColumnSpan="2" Click="UsunKlienta_Click"/>
+    </Grid>
+</Window>

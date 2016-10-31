@@ -1,0 +1,22 @@
+﻿<Window x:Class="Prosty_System_zamówień.DodajTowar"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Prosty_System_zamówień"
+        mc:Ignorable="d"
+        ResizeMode="CanMinimize"
+        Title="DodajTowar" Height="300" Width="300">
+    <Grid>
+        <Button x:Name="Zapisz" Content="Zapisz zmiany" HorizontalAlignment="Left" Height="22" Margin="55,207,0,0" VerticalAlignment="Top" Width="82" Click="Zapisz_Click"/>
+        <Button x:Name="Anuluj" Content="Anuluj" HorizontalAlignment="Left" Height="22" Margin="171,207,0,0" VerticalAlignment="Top" Width="68" Click="Anuluj_Click"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="40,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="85"><Run Text="Podaj "/><Run Text="Nazwę"/><Run Text=":"/></TextBlock>
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Margin="10,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="115"><Run Text="Podaj "/><Run Text="Cenę"/><Run Text=" [netto]"/><Run Text=":"/><LineBreak/><Run/></TextBlock>
+        <TextBox x:Name="pNazwe" HorizontalAlignment="Left" Height="19" Margin="149,54,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="110"/>
+        <TextBox x:Name="pCene" HorizontalAlignment="Left" Height="19" Margin="149,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="110" TextChanged="pCene_TextChanged" RenderTransformOrigin="0.536,-0.809"/>
+        <RadioButton x:Name="procent5" Content="5%" HorizontalAlignment="Left" Margin="33,177,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="procent8" Content="8%" HorizontalAlignment="Left" Margin="118,177,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="procent23" Content="23%" HorizontalAlignment="Left" Margin="207,177,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.719,0.568"/>
+        <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Margin="50,153,0,0" TextWrapping="Wrap" Text="Wybierz opodatkowanie produktu:" VerticalAlignment="Top" Width="209"/>
+    </Grid>
+</Window>

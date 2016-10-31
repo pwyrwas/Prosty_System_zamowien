@@ -1,0 +1,112 @@
+﻿<Window x:Class="Prosty_System_zamówień.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Prosty_System_zamówień"
+        mc:Ignorable="d"
+        ResizeMode="CanMinimize"
+        Title="Prosty system zamówień" Height="461" Width="538">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="393*"/>
+            <ColumnDefinition Width="137*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl x:Name="tabControl" Grid.ColumnSpan="2">
+            <TabItem Header="Przegląd zamówień" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="116" Margin="0">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="55*"/>
+                        <ColumnDefinition Width="10*"/>
+                        <ColumnDefinition Width="225*"/>
+                        <ColumnDefinition Width="236*"/>
+                    </Grid.ColumnDefinitions>
+                    <DataGrid x:Name="dataZamowienia" HorizontalAlignment="Left" Height="273" Margin="22,28,0,0" VerticalAlignment="Top" Width="476" Grid.ColumnSpan="4"/>
+                    <Button x:Name="pobierzAll" Content="Wszystkie Dane" HorizontalAlignment="Left" Height="22" Margin="205,322,0,0" VerticalAlignment="Top" Width="105" Click="pobierzAll_Click" Grid.Column="2" Grid.ColumnSpan="2"/>
+                    <Button x:Name="filtruj" Content="Dane dla klienta" HorizontalAlignment="Left" Height="22" Margin="78,322,0,0" VerticalAlignment="Top" Width="105" Click="filtruj_Click" Grid.Column="2" RenderTransformOrigin="0.419,0.591"/>
+                    <Button x:Name="eksport" Content="Eksportu do XML" HorizontalAlignment="Left" Height="22" Margin="103,322,0,0" VerticalAlignment="Top" Width="105" Grid.Column="3" Click="eksport_Click"/>
+                    <ComboBox x:Name="lKlientowDoWys" HorizontalAlignment="Left" Height="22" Margin="26,322,0,0" VerticalAlignment="Top" Width="101" DropDownOpened="comboKlienci_DropDownOpened" Grid.ColumnSpan="3"/>
+                    <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="28" Margin="22,0,0,0" TextWrapping="Wrap" Text="Lista zamówień:" VerticalAlignment="Top" Width="476" Grid.ColumnSpan="4"/>
+                    <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" Height="20" Margin="27,302,0,0" TextWrapping="Wrap" Text="Wybierz klienta:" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3"/>
+                    <ComboBox x:Name="lTowarowDoWys" HorizontalAlignment="Left" Height="22" Margin="26,366,0,0" VerticalAlignment="Top" Width="101" DropDownOpened="comboTowary_DropDownOpened" Grid.ColumnSpan="3"/>
+                    <Button x:Name="filtrujTowary" Content="Dane dla Towaru" HorizontalAlignment="Left" Height="22" Margin="78,366,0,0" VerticalAlignment="Top" Width="105" Click="filtrujTowary_Click" Grid.Column="2"/>
+                    <TextBlock x:Name="textBlock1_Copy" HorizontalAlignment="Left" Height="20" Margin="27,346,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="3"><Run Text="Wybierz "/><Run Text="towar"/><Run Text=":"/></TextBlock>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Zarządzanie bazą" Margin="101,0,-105,-2" RenderTransformOrigin="0.393,0.5">
+                <Grid Background="#FFE5E5E5" RenderTransformOrigin="0.5,0.5" Margin="0,-3,-4,-5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="21*"/>
+                        <ColumnDefinition Width="17*"/>
+                        <ColumnDefinition Width="47*"/>
+                        <ColumnDefinition Width="98*"/>
+                        <ColumnDefinition Width="347*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform ScaleY="1" ScaleX="1"/>
+                            <SkewTransform AngleY="0" AngleX="0"/>
+                            <RotateTransform Angle="0"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Grid.RenderTransform>
+                    <TabControl x:Name="tabControl1" HorizontalAlignment="Left" Height="402" VerticalAlignment="Top" Width="514" Grid.ColumnSpan="5">
+                        <TabItem Header="Zarządzaj Klientami" Margin="0,0,0,-2">
+                            <Grid Background="#FFE5E5E5" Margin="0,-5,-13,1" RenderTransformOrigin="0.511,0.407">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="102*"/>
+                                    <ColumnDefinition Width="36*"/>
+                                    <ColumnDefinition Width="33*"/>
+                                    <ColumnDefinition Width="18*"/>
+                                    <ColumnDefinition Width="17*"/>
+                                    <ColumnDefinition Width="315*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button x:Name="pobierzKlienta" Content="Pobierz listę klientów" HorizontalAlignment="Left" Margin="29,44,0,0" VerticalAlignment="Top" Width="300" Height="29" Click="pobierzKlienta_Click" Grid.ColumnSpan="6"/>
+                                <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="28,99,0,0" Height="208" Width="168" Grid.ColumnSpan="5"/>
+                                <Button x:Name="dodajKlienta" Content="Dodaj Klienta" HorizontalAlignment="Left" Margin="156,44,0,0" VerticalAlignment="Top" Width="146" Height="29" Click="dodajKlienta_Click" Grid.Column="5"/>
+                                <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Height="30" Margin="156,162,0,0" VerticalAlignment="Top" Width="146" Grid.Column="5"/>
+                                <Button x:Name="edytujKlienta" Content="Edytuj Klienta" HorizontalAlignment="Left" Height="30" Margin="4,162,0,0" VerticalAlignment="Top" Width="137" Click="edytujKlienta_Click" Grid.Column="5"/>
+                                <TextBlock x:Name="infCombobox" HorizontalAlignment="Left" Margin="156,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146" Grid.Column="5"><Run Text="Wybierz  osobnę"/><Run Text=" którą chcesz zaktualizować:"/></TextBlock>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Zarządzaj Towarami" Margin="-6,0,2,-2">
+                            <Grid Background="#FFE5E5E5" Margin="0,-2,-15,-7">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="9*"/>
+                                    <ColumnDefinition Width="30*"/>
+                                    <ColumnDefinition Width="47*"/>
+                                    <ColumnDefinition Width="437*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button x:Name="pobierz" Content="Pobierz listę towarów" HorizontalAlignment="Left" Margin="20,41,0,0" VerticalAlignment="Top" Width="231" Height="29" Click="pobierz_towary" Grid.ColumnSpan="3" Grid.Column="1"/>
+                                <DataGrid x:Name="listaTowarow" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="18,96,0,0" Height="181" Width="463" Grid.ColumnSpan="3" Grid.Column="1"/>
+                                <Button x:Name="DodajTowar" Content="Dodaj Towar" HorizontalAlignment="Left" Margin="189,41,0,0" VerticalAlignment="Top" Width="215" Height="29" Click="dodaj_towar" Grid.Column="3"/>
+                                <ComboBox x:Name="WybierzTowar" HorizontalAlignment="Left" Height="30" Margin="258,309,0,0" VerticalAlignment="Top" Width="146" Grid.Column="3" SelectionChanged="WybierzTowar_SelectionChanged"/>
+                                <Button x:Name="edytujTowar" Content="Edytuj Towar" HorizontalAlignment="Left" Height="30" Margin="18,309,0,0" VerticalAlignment="Top" Width="137" Click="edytujTowar_Click" Grid.Column="1" Grid.ColumnSpan="3"/>
+                                <TextBlock x:Name="infWybierzTowar" HorizontalAlignment="Left" Margin="96,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146" Grid.Column="3" RenderTransformOrigin="0.658,2.193"><Run Text="Wybierz  "/><Run Text="towar"/><Run Text=" któr"/><Run Text="y"/><Run Text=" chcesz zaktualizować:"/></TextBlock>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Złóż zamówienie" Margin="-102,0,104,-2">
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*"/>
+                        <ColumnDefinition Width="227*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="Wybierz_klienta" HorizontalAlignment="Left" Height="22" Margin="21,75,0,0" TextWrapping="Wrap" Text="Wybierz klienta:" VerticalAlignment="Top" Width="145" Grid.ColumnSpan="2"/>
+                    <TextBlock x:Name="Wybierz_towar" HorizontalAlignment="Left" Height="22" Margin="21,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Grid.ColumnSpan="2"><Run Text="Wybierz Towar"/><Run Text=":"/></TextBlock>
+                    <ComboBox x:Name="comboTowary" HorizontalAlignment="Left" Margin="140,151,0,0" VerticalAlignment="Top" Width="136" DropDownOpened="comboTowary_DropDownOpened" Grid.Column="1"/>
+                    <Button x:Name="ZlozZamowienie" Content="Złóż zamówienie" HorizontalAlignment="Left" Margin="119,258,0,0" VerticalAlignment="Top" Width="176" RenderTransformOrigin="0.494,4.4" Click="ZlozZamowienie_Click" Grid.Column="1"/>
+                    <Button x:Name="dKlienta" Content="Dodaj Klienta" HorizontalAlignment="Left" Margin="327,73,0,0" VerticalAlignment="Top" Width="106" Click="dodajKlientaPrzyZamawianiu_Click" Grid.Column="1"/>
+                    <ComboBox x:Name="comboKlienci" Margin="140,75,0,0" DropDownOpened="comboKlienci_DropDownOpened" VerticalAlignment="Top" HorizontalAlignment="Left" Width="136" Grid.Column="1"/>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+
+    </Grid>
+
+</Window>
