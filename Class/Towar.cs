@@ -20,40 +20,9 @@ namespace Prosty_System_zamówień
         public int pobierzIDTowaru()
         {
             string sqlString = "SELECT id FROM  Towary WHERE NazwaTowaru LIKE '" + Nazwa + "';";
-            if (sqlString != null)
-            {
-                string connString = @"Server=DESKTOP-AEJBGEO\SQLEXPRESS;Database=Test;Trusted_Connection=True;";
-
-                SqlConnection polaczenie = new SqlConnection(connString);
-                try
-                {
-                    polaczenie.Open();
-                    using (SqlCommand zapytanie = new SqlCommand(sqlString, polaczenie))
-                    {
-                        DataTable dt = new DataTable();
-
-                        SqlDataAdapter da = new SqlDataAdapter(zapytanie);
-                        da.Fill(dt);
-                        foreach (DataRow row in dt.Rows)
-                        {
-                            Id = (int)row.ItemArray[0];
-
-                        }
-                        return Id;
-                    }
-
-                    polaczenie.Close();
-                }
-                catch (System.Data.SqlClient.SqlException)
-                {
-                    MessageBox.Show("Nieudało się połączyć z bazą danych!");
-                    return -1;
-                }
-            }
-            else
-            {
-                return -1;
-            }
+            BazaDanych bd = new BazaDanych();
+            Id  =bd.pobierzID(sqlString);
+            return Id;
         }
         /// <summary>
         /// Aktualizowanie danych o towarze. NazwaTowaru oraz Cena

@@ -11,7 +11,7 @@ namespace Prosty_System_zamówień
 {
     public class BazaDanych
     {
-        public string connString = @"Server=DESKTOP-AEJBGEO\SQLEXPRESS;Database=Test;Trusted_Connection=True;";
+        //public string connString = @"Server=DESKTOP-AEJBGEO\SQLEXPRESS;Database=Test;Trusted_Connection=True;";
 
         /// <summary>
         /// Pobieranie danych z bazy danych na podstawie podanego zapytania
@@ -21,9 +21,7 @@ namespace Prosty_System_zamówień
         {
             if (sqlString != null)
             {
-                string connString = @"Server=DESKTOP-AEJBGEO\SQLEXPRESS;Database=Test;Trusted_Connection=True;";
-
-                SqlConnection polaczenie = new SqlConnection(connString);
+                SqlConnection polaczenie = new SqlConnection(pobierzLancuchPolaczenia());
                 try
                 {
                     polaczenie.Open();
@@ -55,10 +53,8 @@ namespace Prosty_System_zamówień
         /// <returns></returns>
         public bool wyslijDane(String sqlString, String wiadomosc)
         {
-            //wiadomość to wiadomość pokazywana w MessageBox w przypadku wystapienia błędu
-            string connString = @"Server=DESKTOP-AEJBGEO\SQLEXPRESS;Database=Test;Trusted_Connection=True;";
 
-            SqlConnection polaczenie = new SqlConnection(connString);
+            SqlConnection polaczenie = new SqlConnection(pobierzLancuchPolaczenia());
             try
             {
                 polaczenie.Open();
@@ -74,6 +70,55 @@ namespace Prosty_System_zamówień
                 MessageBox.Show(wiadomosc);
                 return false;
             }
+        }
+        /// <summary>
+        /// Pobieranie ID towaru lub Klienta w zależności od złożonego zapytania
+        /// </summary>
+        /// <returns></returns>
+        public int pobierzID(String sqlString)
+        {
+            int Id = -1;
+            if (sqlString != null)
+            {
+                SqlConnection polaczenie = new SqlConnection(pobierzLancuchPolaczenia());
+                try
+                {
+                    polaczenie.Open();
+                    using (SqlCommand zapytanie = new SqlCommand(sqlString, polaczenie))
+                    {
+                        DataTable dt = new DataTable();
+
+                        SqlDataAdapter da = new SqlDataAdapter(zapytanie);
+                        da.Fill(dt);
+                        foreach (DataRow row in dt.Rows)
+                        {
+                          Id  = (int)row.ItemArray[0];
+                        }
+                        return Id;
+                    }
+
+                    polaczenie.Close();
+                }
+                catch (System.Data.SqlClient.SqlException)
+                {
+                    MessageBox.Show("Nieudało się połączyć z bazą danych!");
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
+        }
+        public string pobierzLancuchPolaczenia()
+        {
+            string line;
+            // Read the file and display it line by line.
+            System.IO.StreamReader file =
+            new System.IO.StreamReader(@"..\Debug\polaczenie.txt");
+            line = file.ReadLine();
+            file.Close();
+            return line;
         }
     }
 }

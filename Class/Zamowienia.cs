@@ -25,23 +25,9 @@ namespace Prosty_System_zamówień
 
             string connString = @"Server=DESKTOP-AEJBGEO\SQLEXPRESS;Database=Test;Trusted_Connection=True;";
             string sqlString = "INSERT INTO Zamowienia ([ID_Klienta], [ID_Towaru], [Data_Zamowienia]) VALUES ('" + ID_Klienta + "', '" + ID_Towaru + "' , '"+dataDodania.ToString("MM-dd-yyyy HH:mm:ss")+"');";
-            
-            SqlConnection polaczenie = new SqlConnection(connString);
-            try
-            {
-                polaczenie.Open();
 
-                SqlCommand zapytanie = new SqlCommand(sqlString, polaczenie);
-                zapytanie.ExecuteNonQuery();
-                polaczenie.Close();
-                return true;
-            }
-
-            catch (System.Data.SqlClient.SqlException)
-            {
-                MessageBox.Show("Nieudało się dodać Zamówienia!");
-                return false;
-            }
+            BazaDanych bd = new BazaDanych();
+            return bd.wyslijDane(sqlString, "Nie udalo się połączyć z bazą danych!");
         }
         /// <summary>
         /// Pobranie zamówień do DataTable. Wszystkich jeżeli podano null, Konkretnego Klienta jeżeli przekazano dane Klienta.
@@ -62,7 +48,8 @@ namespace Prosty_System_zamówień
             
             if (sqlString != null)
             {
-                string connString = @"Server=DESKTOP-AEJBGEO\SQLEXPRESS;Database=Test;Trusted_Connection=True;";
+                BazaDanych bd = new BazaDanych();
+                string connString = bd.pobierzLancuchPolaczenia();
 
                 SqlConnection polaczenie = new SqlConnection(connString);
                 try
@@ -106,7 +93,8 @@ namespace Prosty_System_zamówień
 
             if (sqlString != null)
             {
-                string connString = @"Server=DESKTOP-AEJBGEO\SQLEXPRESS;Database=Test;Trusted_Connection=True;";
+                BazaDanych bd = new BazaDanych();
+                string connString = bd.pobierzLancuchPolaczenia();
 
                 SqlConnection polaczenie = new SqlConnection(connString);
                 try

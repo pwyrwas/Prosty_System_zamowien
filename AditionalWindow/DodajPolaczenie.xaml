@@ -1,0 +1,16 @@
+﻿<Window x:Class="Prosty_System_zamówień.DodajPolaczenie"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Prosty_System_zamówień"
+        mc:Ignorable="d"
+        Title="DodajPolaczenie" Height="195.389" Width="491.066" Topmost="True" ResizeMode="NoResize">
+    <Grid Margin="1,0,1,-1" Width="481">
+        <TextBox x:Name="polaczenie" HorizontalAlignment="Left" Height="26" Margin="10,68,0,0" TextWrapping="Wrap" Text="Podaj łańcuch połączenia..." VerticalAlignment="Top" Width="454"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Height="31" Margin="10,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="461" FontSize="10"><Span Foreground="Green" FontFamily="Consolas"><Run Text="Server=DESKTOP-AEJBGEO\SQLEXPRESS;Database=Test;Trusted_Connection=True;"/></Span></TextBlock>
+        <TextBlock x:Name="textBlock_Copy" HorizontalAlignment="Left" Height="31" Margin="10,6,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="463" FontSize="10"><Run Foreground="Green" FontWeight="Bold" FontFamily="Consolas" Text="Format Łańcucha znaków:"/></TextBlock>
+        <Button x:Name="polacz" Content="Połącz z bazą danych" Margin="10,102,17,26" Click="polacz_Click"/>
+
+    </Grid>
+</Window>

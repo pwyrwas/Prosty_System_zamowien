@@ -16,42 +16,11 @@ namespace Prosty_System_zamówień
         /// <returns></returns>
         public int pobierzIDKlienta()
         {
+            BazaDanych bd = new BazaDanych();
             string sqlString = "SELECT ID FROM  Klienci WHERE Imie LIKE '"+Imie+"' AND Nazwisko LIKE '"+Nazwisko+"';";
-            if (sqlString != null)
-            {
-                string connString = @"Server=DESKTOP-AEJBGEO\SQLEXPRESS;Database=Test;Trusted_Connection=True;";
+            Id  = bd.pobierzID(sqlString);
 
-                SqlConnection polaczenie = new SqlConnection(connString);
-                try
-                {
-                    polaczenie.Open();
-                    using (SqlCommand zapytanie = new SqlCommand(sqlString, polaczenie))
-                    {
-                        DataTable dt = new DataTable();
-
-                        SqlDataAdapter da = new SqlDataAdapter(zapytanie);
-                        da.Fill(dt);
-                        foreach (DataRow row in dt.Rows)
-                        {
-                            Id = (int)row.ItemArray[0];
-                          
-                        }
-                        return Id;
-                    }
-
-                    polaczenie.Close();
-                }
-                catch (System.Data.SqlClient.SqlException)
-                {
-                    MessageBox.Show("Nieudało się połączyć z bazą danych!");
-                    return -1;
-                }
-            }
-            else
-            {
-                return -1;
-            }
-
+            return Id;
         }
         /// <summary>
         /// Aktualizacja danych klienta (Imie, Nazwisko, ID)

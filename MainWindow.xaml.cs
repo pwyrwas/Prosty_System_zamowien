@@ -15,8 +15,10 @@ namespace Prosty_System_zamówień
     {
         public MainWindow()
         {
+            DodajPolaczenie wnd = new DodajPolaczenie();  //przekazanie do nowego okna
+            wnd.Show();
             InitializeComponent();
-
+            
             //Zarządzanie klientami
 
             dataGrid.Visibility = Visibility.Hidden;
