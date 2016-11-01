@@ -21,3 +21,4 @@ C:\Users\pwyrw\documents\visual studio 2015\Projects\SystemZamowien\Prosty_Syste
 C:\Users\pwyrw\documents\visual studio 2015\Projects\SystemZamowien\Prosty_System_zamówień\obj\Debug\AditionalWindow\EdytujOsobe.baml
 C:\Users\pwyrw\documents\visual studio 2015\Projects\SystemZamowien\Prosty_System_zamówień\obj\Debug\AditionalWindow\DodajPolaczenie.g.cs
 C:\Users\pwyrw\documents\visual studio 2015\Projects\SystemZamowien\Prosty_System_zamówień\obj\Debug\AditionalWindow\DodajPolaczenie.baml
+C:\Users\pwyrw\documents\visual studio 2015\Projects\SystemZamowien\Prosty_System_zamówień\obj\Debug\Prosty_System_zamówień.csprojResolveAssemblyReference.cache

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace Prosty_System_zamówień
 {
@@ -27,9 +28,23 @@ namespace Prosty_System_zamówień
         private void polacz_Click(object sender, RoutedEventArgs e)
         {
             string conString = polaczenie.Text.ToString();
+            string filePath = @"..\Debug\Polaczenie.txt";
             try
             {
-                System.IO.File.WriteAllText(@"..\Debug\Polaczenie.txt", conString);
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(filePath))
+                {
+                    file.WriteLine(conString);
+                }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Nieudało się stworzyć pliku połączenia!");
+            }
+
+            try
+            {
+                System.IO.File.WriteAllText(filePath, conString);
                 BazaDanych bd = new BazaDanych();
                 bool stan = bd.wyslijDane("SELECT * FROM Zamowienia","Niepoprawny łańcuch połączenia, Sprawdź jego poprawność,");
                 if (stan == true)
